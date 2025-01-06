@@ -1,31 +1,107 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.7.34024.191
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project5", "Project5\Project5.vcxproj", "{80FA44D1-3E39-466E-B32D-42959A29AD70}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{80FA44D1-3E39-466E-B32D-42959A29AD70}.Debug|x64.ActiveCfg = Debug|x64
-		{80FA44D1-3E39-466E-B32D-42959A29AD70}.Debug|x64.Build.0 = Debug|x64
-		{80FA44D1-3E39-466E-B32D-42959A29AD70}.Debug|x86.ActiveCfg = Debug|Win32
-		{80FA44D1-3E39-466E-B32D-42959A29AD70}.Debug|x86.Build.0 = Debug|Win32
-		{80FA44D1-3E39-466E-B32D-42959A29AD70}.Release|x64.ActiveCfg = Release|x64
-		{80FA44D1-3E39-466E-B32D-42959A29AD70}.Release|x64.Build.0 = Release|x64
-		{80FA44D1-3E39-466E-B32D-42959A29AD70}.Release|x86.ActiveCfg = Release|Win32
-		{80FA44D1-3E39-466E-B32D-42959A29AD70}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3C59DE45-CC31-4443-9EEE-C2EBB5E81CF8}
-	EndGlobalSection
-EndGlobal
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mia's Birthday Surprise</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('shinchan_birthday.jpg') no-repeat center center/cover;
+        }
+        .present-box {
+            width: 300px;
+            height: 300px;
+            background: red;
+            border: 5px solid gold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+        }
+        .open-btn {
+            position: absolute;
+            bottom: -50px;
+            background: gold;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .fireworks, .bouquet, .message {
+            display: none;
+            position: absolute;
+            text-align: center;
+            color: white;
+        }
+        .bouquet {
+            width: 300px;
+            height: auto;
+        }
+        .message {
+            font-size: 40px;
+            font-weight: bold;
+            top: 20%;
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+        @keyframes explode {
+            to { transform: scale(5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="present-box" id="present">
+        🎁
+        <button class="open-btn" onclick="openPresent()">Open Present</button>
+    </div>
+
+    <div class="fireworks" id="fireworks">
+        🎆🎇✨
+    </div>
+    <div class="message" id="message">
+        Happy 21st Birthday to the most beautiful and amazing girl ever Mia!
+    </div>
+    <img src="bouquet.png" alt="Bouquet of Flowers" class="bouquet" id="bouquet">
+
+    <script>
+        function openPresent() {
+            let present = document.getElementById('present');
+            present.style.animation = 'shake 0.5s ease-in-out';
+            setTimeout(() => {
+                present.style.animation = 'explode 1s forwards';
+                setTimeout(() => {
+                    document.body.style.background = 'black';
+                    document.getElementById('fireworks').style.display = 'block';
+                    document.getElementById('message').style.display = 'block';
+                    document.getElementById('bouquet').style.display = 'block';
+                }, 1000);
+            }, 500);
+        }
+    </script>
+</body>
+</html> 
